@@ -12,7 +12,7 @@ sock_listen.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 sock_listen.bind((SERVER_ADDRESS, SERVER_PORT))
 
-sock_listen.listen(5)
+sock_listen.listen(2)
 
 print("Server in ascolto su %s." % str((SERVER_ADDRESS, SERVER_PORT)))
 
