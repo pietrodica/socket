@@ -6,13 +6,13 @@ SERVER_ADDRESS = '127.0.0.1'
 
 SERVER_PORT = 22224
 
-sock_listen = socket.socket()
+sock_listen = socket.socket() //_accettazioni delle richieste del client 
 
-sock_listen.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+sock_listen.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) //_la porta viene liberata in automatico
 
 sock_listen.bind((SERVER_ADDRESS, SERVER_PORT))
 
-sock_listen.listen(2)
+sock_listen.listen(5) //mettiamo un limite di 5 richieste dai client
 
 print("Server in ascolto su %s." % str((SERVER_ADDRESS, SERVER_PORT)))
 
@@ -28,6 +28,8 @@ while True:
         if not dati:
             print("Fine dati dal client. Reset")
             break
+        //una volta accetta la richiesta, il contatore di esse si incrementa di 
+        //uno e se non ci sono dati la connessione si interrompe   
         
         dati = dati.decode()
         print("Ricevuto: '%s'" % dati)
@@ -39,5 +41,5 @@ while True:
         dati = dati.encode()
 
         sock_service.send(dati)
-
+        // una volta ricodificati i dati in byte,vengono rinviati al server.
     sock_service.close()
