@@ -4,7 +4,7 @@ SERVER_ADDRESS = '127.0.0.1'
 SERVER_PORT = 22224
 
 
-def inviaComandi(socket):
+def inviaComandi(socket): #invio dei comandi alla socket server
     while True:
         try:
             dati = input(
